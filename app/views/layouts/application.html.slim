@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta name="description" content=""
+    meta name="author" content=""
+    title
+      | Starter Template for Bootstrap
+    /! HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      = javascript_include_tag "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js", "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    = csp_meta_tag
+  body
+    nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
+            span.sr-only
+              | Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to "Project name", "#", class: "navbar-brand"
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              = active_link_to 'Home',      root_path,   wrap_tag: :li, active: [['dashboards'], ['show']]
+              = active_link_to 'User',      users_path,  wrap_tag: :li
+            - if current_user
+              li
+                = link_to "Edit Profile", edit_user_path(current_user.id)
+              li
+                = link_to "Logout", :logout, method: :post
+            - else
+              li
+                = link_to "Register", new_user_path
+              li
+                = link_to "Login", :login
+
+    .container
+      - flash_messages
+
+      = yield

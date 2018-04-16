@@ -1,0 +1,14 @@
+= simple_form_for(@<%= singular_table_name %>, html: { class: 'form-horizontal' }) do |f|
+  /= f.error_notification
+  - ar_errors(@<%= singular_table_name %>)
+
+  .form-inputs
+<%- attributes.each do |attribute| -%>
+  <%- unless [:id, :deleted_at, :created_at, :updated_at].include?(attribute.name.to_sym) -%>
+    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
+  <%- end -%>
+<%- end -%>
+
+  .form-actions
+    .col-sm-offset-2
+      = f.button :submit

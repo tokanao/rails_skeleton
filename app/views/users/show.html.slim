@@ -1,0 +1,30 @@
+.page-header
+  = link_to users_path, class: 'btn btn-default' do 
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  = link_to edit_user_path(@user), class: 'btn btn-primary' do 
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1
+    | Show user
+dl.dl-horizontal
+  dt
+    | Id:
+  dd
+    = @user.id
+  dt
+    | Name:
+  dd
+    = @user.name
+  dt
+    | Email:
+  dd
+    = @user.email
+  dt
+    | Created at:
+  dd
+    = @user.created_at
+  dt
+    | Updated at:
+  dd
+    = @user.updated_at

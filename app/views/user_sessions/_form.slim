@@ -1,0 +1,20 @@
+= form_tag user_sessions_path, :method => :post, class: 'form-signin' do
+  img.mb-4[src="./img/logo.svg" alt="" width="72" height="72"]
+  h1.h3.mb-3.font-weight-normal
+    | Please sign in
+  label.sr-only[for="inputEmail"]
+    | Email address
+  = text_field_tag :email, '', type: :email, placeholder: 'Email address', class: 'form-control'
+  label.sr-only[for="inputPassword"]
+    | Password
+  = text_field_tag :password, '', type: :password, placeholder: 'Password', class: 'form-control'
+
+  /.checkbox.mb-3
+    label
+      input[type="checkbox" value="remember-me"]
+      |  Remember me 
+  /button.btn.btn-lg.btn-primary.btn-block[type="submit"]
+  /  | Sign in
+  = button_tag 'Sign in', type: 'submit', class: 'btn btn-lg btn-primary btn-block'
+  /p.mt-5.mb-3.text-muted
+    | c 2017-2018
